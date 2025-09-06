@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="applicable-device" content="pc,mobile" >
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand" >
+<meta http-equiv="X-UA-Compatible" content="ie=edge" >
+<title>{{ book.title }}最新章节TXT下载_{{ book.title }}{{site.name}}无弹窗_{{ book.author }}_{{site.name}}</title>
+<meta name="description" content="{{ page.description }}">
+<meta name="keywords" content="{{ book.title }}最新章节,{{ book.title }}{{site.name}}无弹窗,{{ book.title }}TXT下载">
+<meta property="og:type" content="novel"/>
+<meta property="og:title" content="{{ book.title }}"/>
+<meta property="og:description" content="{{ page.description }}"/>
+<meta property="og:image" content="{{ site.domain }}{{ book.cover }}"/>
+<meta property="og:novel:category" content="{{ book.category }}"/>
+<meta property="og:novel:author" content="{{ book.author }}"/>
+<meta property="og:novel:book_name" content="{{ book.title }}"/>
+<meta property="og:novel:read_url" content="{{ site.domain }}{{ book.url }}"/>
+<meta property="og:url" content="{{ site.domain }}{{ book.url }}"/>
+<meta property="og:novel:status" content="{{ book.status }}"/>
+<meta property="og:novel:update_time" content="{{ book.update_time }}" >
+<meta property="og:novel:latest_chapter_name" content="{{ book.book_chapter_name }}"/>
+<meta property="og:novel:latest_chapter_url" content="{{ site.domain }}{{ book.first_chapter_url }}"/>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+<link rel="stylesheet" href="/style/style.css">
+<script src="/style/common.js"></script>
+<script src="/style/top.js"></script>
+</head>
+<body>
+<script>header()</script>
+<!-- PC 导航 -->
+<ul class="nav">
+  <li><a href="/">首页</a></li>
+  {{ for c in categories }}
+<li><a href="/{{ c.dir }}/">{{ c.name }}</a></li>
+  {{ endfor }}
+  <li><a href="/rank/">排行</a></li>
+</ul>
+
+<!-- 移动端简化导航 -->
+<ul class="m-nav">
+  <li><a href="/">首页</a></li>
+  <li><a href="/rank/">排行</a></li>
+</ul>
+<div class="container" id="container">
+  <div class="row row-detail">
+    <div class="layout layout-col1">
+      <h2 class="layout-tit"><a href="/index.html">{{ site.name }}</a> &gt; {{ category.name }} &gt; {{ book.title }}</h2>
+      <div class="detail-box">
+        <div class="imgbox">
+          <img alt="{{ book.title }}" src="{{ book.cover }}">
+          <i class="flag flag-over xs-hidden"></i>
+        </div>
+        <div class="info">
+          <div class="top">
+            <h1>{{ book.title }}</h1>
+            <div class="fix">
+              <p>作&nbsp;&nbsp;者：{{ book.author }}</p>
+              <p class="xs-show">类&nbsp;&nbsp;别：{{ category.name }}</p>
+              <p class="opt"><span class="xs-hidden"> {{ category.name }}：</span>
+                <a href="{{ book.first_chapter_url }}" class="xs-show btn-read">开始阅读</a>
+                <a rel="nofollow" href="#">加入书架</a> <i class="xs-hidden">、</i>
+
+                <a rel="nofollow" href="#footer" class="btn-tobtm">直达底部</a> <i class="xs-hidden">、</i>
+              </p>
+              <p class="xs-show">状&nbsp;&nbsp;态：{{ book.status }}</p>
+                                          <p>{{ book.update_time }}</p>
+
+            </div>
+          </div>
+          <div class="desc xs-hidden">{{ book.intro }}</div>
+        </div>
+        <div class="m-desc xs-show">
+          <strong>简介:</strong> {{ book.intro }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="read_tj" class="read_tj xs-hidden">
+    热门推荐：
+
+  {{ for v in site_books_random }}<a href="{{ v.url }}">{{ v.title }}</a>{{ endfor }}
+
+  </div>
+<div class="row row-section">
+  <div class="layout layout-col1">
+    <h2 class="layout-tit">《{{ book.title }}》最新章节</h2>
+    <div class="section-box">
+      <ul class="section-list fix">
+        {{ for v in chapters_latest }}
+        <li><a href="{{ v.url }}">{{ v.title }}</a></li>
+        {{ endfor }}
+      </ul>
+    </div>
+
+    <h2 class="layout-tit">《{{ book.title }}》正文</h2>
+    <div class="section-box">
+      <ul class="section-list fix">
+        {{ for v in chapters }}
+        <li><a href="{{ v.url }}">{{ v.title }}</a></li>
+        {{ endfor }}
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="read_tj" class="read_tj xs-hidden">
+推荐：
+{{ for b in site_kw_books_random }}<a href="{{ b.url }}">{{ b.title }}</a>{{ endfor }}
+  </div>
+</div>
+
+<div class="footer" id="footer">
+  <div class="pc-footer">
+    <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。<a href="/sitemap-index.xml">sitemap</a></p>
+  </div>
+  <div class="m-footer">
+    <a href="/">首页</a>
+    <a href="#container">顶部↑</a>
+  </div>
+</div>
+<script type="text/javascript" src="/style/foot.js"></script>
+</body>
+</html>
