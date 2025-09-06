@@ -22,7 +22,7 @@ apt-get install fonts-wqy-zenhei
 Nginx 任意版本（只负责静态文件分发；与采集无强依赖）
 
 例子：
-www.joelcreese.com
+joelcreese.com
 
 [笔趣阁](https://www.joelcreese.com/)
 
